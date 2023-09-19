@@ -6,7 +6,7 @@
 #un ciclo “for” y utilizando la notaci´on abreviada de R.
 
 rm(list=ls())
-setwd("/Users/cande/Desktop/Labo/")
+#setwd("/Users/cande/Desktop/Labo/")
 vector<-c() #vector vacio
 for(i in seq(1:1000)){
 numero<-1:1000
@@ -19,6 +19,23 @@ print(vector)
 #componente correspondiente a la fila i, columna j del array debe tener el 
 #resultado del producto de i*j.
 
-arrayb<-array(dim=c(30,20)) #array de 30 filas y 20 columnas. Me lo completa con
-#NA 
+arrayb<-array(1:600,dim=c(30,20)) #array de 30 filas y 20 columnas. Tiene
+#dos dimensiones. Preguntar lo de i*j
+dim(arrayb)
+
+
+#Ejercicio 3
+#Inciso a
+#calcular el producto matricial entre dos matrices A y B
+rm(list=ls())
+a<-c()
+while(length(a)<9){
+  if(length(a)>=9){
+    break
+  } else {
+    dat<-as.numeric(readline("Ingrese numeros"))
+    a<-c(a,dat)
+  }
+}
+matriza<-matrix(data=a,nrow=3,ncol=3)
 
