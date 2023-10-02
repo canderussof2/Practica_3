@@ -6,7 +6,8 @@
 #pantalla la hora en la que ocurrio el maximo valor medido y el valor de la temperatura maxima
 #medida.
 getwd()
-setwd("/home/clinux01/Escritorio/Cande /Practica_3/")
+setwd("/Users/cande/Desktop/Labo/Practica_3/")
+#setwd("/home/clinux01/Escritorio/Cande /Practica_3/")
 rm(list=ls())
 
 temperatura<-c()
@@ -23,7 +24,7 @@ max<-max(temperatura) #Valor maximo de temperatura
 posicmax<-which(temperatura==max) #posicion donde se da la maxima temp
 tempmax<-temperatura[which(temperatura==max)] #Valor maximo de temperatura
 horamax<-horas[which.max(temperatura)] 
-print(paste("La Mayor temperatura registrada fue de",tempmax,"°C y ocurrió a las",horamax,"horas"))
+print(paste("La mayor temperatura registrada fue de",tempmax,"Â°C y ocurriÃ³ a las",horamax,"horas"))
 
 
 
