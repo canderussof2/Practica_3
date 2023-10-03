@@ -39,3 +39,21 @@ a[a == -4] #Preguntar. Es porque ningun valor de a es -4?
 #devuelve numeric (0)
 
 #----------- Inciso b -----------
+mi_matriz<-matrix(data=1:25,nrow= 5, ncol=5 , byrow=TRUE)
+
+mi_matriz[3,2] #Me devuelve el valor que esta en la fila 3, columna 2
+
+mi_matriz[3,] #Me devuelve toda la fila 3
+
+mi_matriz[, 2] #Me devuelve toda la columna 2
+
+mi_matriz[seq(1, 5, 2),] #Me arma una nueva matriz con las filas 1,3 y 5. Preguntar
+
+mi_matriz[,seq(2, 5, 2)] #Me arma una nueva matriz con las columnas 2. Preguntar
+
+mi_matriz[seq(1, 5, 2), seq(1, 5, 2)] #Preguntar
+
+mi_matriz[10]  #Me devuelve el valor que esta en la posicion 10. Se va completando por columnas
+
+b <- c ( 1 , 5 , 7 )
+mi_matriz[b] #Me devuelve los valores q estan en la posicion 1,5 y 7. Se va completando por columnas

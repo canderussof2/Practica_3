@@ -19,6 +19,7 @@ for (temp in horas){
     t<-as.numeric(readline("Ingrese nuevamente la temperatura: "))
   } 
   temperatura<-c(temperatura,t)
+  suma<-temperatura+t
 }
 max<-max(temperatura) #Valor maximo de temperatura
 posicmax<-which(temperatura==max) #posicion donde se da la maxima temp
@@ -27,9 +28,19 @@ horamax<-horas[which.max(temperatura)]
 print(paste("La mayor temperatura registrada fue de",tempmax,"°C y ocurrió a las",horamax,"horas"))
 
 
+# ---------------- Inciso c ----------------
+
+#Calcular la suma de todos los elementos de la serie de temperaturas y comparar los resultados
+#utilizando la func intrınseca “sum”. Idem con el promedio de las temperaturas 
+#(verificar utilizando la funcion intrınseca “mean”).
 
 
-
-
-
+for (valor in temperatura) {
+  if(valor>=9) {
+    break
+  } else {
+   suma<-temperatura[valor]+temperatura[valor+1]
+  } 
+}
+sum<-sum(temperatura)
 
