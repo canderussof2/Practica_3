@@ -162,5 +162,60 @@ rm(list="lista_datos_azul","lista_datos_catamarca","lista_datos_aeroparque",
 rm(list="datos_azul", "datos_catamarca","datos_aeroparque","datos_chilecito",
    "datos_iguazu","datos_mendoza")
 
+#---------------------------------  Punto 2 ---------------------------------
+#En base a la lista armada en el punto a), desarrollar funciones que permitan 
+#hacer lo siguiente:
+
+#---------------------------------  Inciso i ---------------------------------
+#A partir del array, generar un resumen por pantalla con el nombre de las 
+#estaciones y la cantidad de datos presentes en cada una, los estadısticos basicos 
+#de cada serie (media, desvıo estandar, valor maximo y mınimo), la fecha inicial 
+#del perıodo abarcado y la fecha final.
+#Tip: organizar los datos de cada estacion en un data.frame.
+
+#Primero me quedo con los elementos de cada estacion
+estacion_azul <- datos[[1]]
+latitud_azul <- datos[[2]]
+longitud_azul <- datos[[3]]
+altura_azul <- datos[[4]]
+codigo_identificacion_azul <- datos[[5]]
+fecha_azul <- datos[[6]]
+presion_azul <- datos[[7]]
+temp_azul <- datos[[8]]
+temp_rocio_azul <- datos[[9]]
+
+#creo el dataframe 
+data_azul <- data.frame("Estacion" = estacion_azul, "Latitud" = latitud_azul,
+                        "Longitud" = longitud_azul, "Altura" = altura_azul, 
+                        "Codigo de identifiacion" = codigo_identificacion_azul,
+                        "Fecha" = fecha_azul, "Temperatura" = temp_azul, 
+                        "Temperatura de rocio" = temp_rocio_azul,
+                        "Presion" = presion_azul )
+ 
+estad<-function(x) {
+  if (x==estacion_azul){
+    estacion<-estacion_azul
+    latitud<-latitud_azul
+    longitud <- longitud_azul
+    altura <- altura_azul
+    codigo <- codigo_identificacion_azul
+  } 
+  media<-mean(x,na.rm=T)
+  desvio_estandar<-sd(x,na.rm=T)
+  maximo<-max(x,na.rm=T)
+  minimo<-min(x,na.rm=T)
+  return(data.frame("Estacion"=estacion,"Latitud"=latitud,"Longitud"=longitud,
+                    "Altura"=altura, "Codigo"= codigo," Media"= media , "Desvío"= desvio_estandar,
+                    "Máximo"=maximo,"Minimo"= minimo))
+}
+
+
+#---------------------------------  Inciso iii ---------------------------------
+
+guardado <- function (x) {
+  save(x, file = "DatosEstaciones.RData") 
+}
+guardado(datos)
+
 
 
