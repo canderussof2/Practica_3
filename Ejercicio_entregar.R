@@ -28,6 +28,7 @@ temp_rocio_farenheit_a_centigrados <- function (Temperatura) {
   tr <- (Temperatura - 32) * 5/9
   return(tr)
 }
+
 #AZUL
 #Primero, cargo los datos. Los carga como un dataframe. Con as.list() fuerzo a 
 #convertirlo en lista
@@ -193,7 +194,7 @@ data_azul <- data.frame("Estacion" = estacion_azul, "Latitud" = latitud_azul,
                         "Presion" = presion_azul )
  
 estad<-function(x) {
-  if (x==estacion_azul){
+  if (x==data_azul){
     estacion<-estacion_azul
     latitud<-latitud_azul
     longitud <- longitud_azul
@@ -208,6 +209,13 @@ estad<-function(x) {
                     "Altura"=altura, "Codigo"= codigo," Media"= media , "Desvío"= desvio_estandar,
                     "Máximo"=maximo,"Minimo"= minimo))
 }
+
+estad(data_azul)
+#---------------------------------  Inciso ii ---------------------------------
+#una funcion que permita obtener todas las estaciones que estan dentro de una
+#determinada region definida por una latitud maxima, una latitud mınima, una 
+#longitud maxima y una longitud mınima. En el caso que no haya, devuelva el
+#mensaje ”No hay estaciones cercanas”.
 
 
 #---------------------------------  Inciso iii ---------------------------------
