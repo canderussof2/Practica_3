@@ -67,7 +67,7 @@ nombre_azul<-datos_estaciones[1,1]
 lat_azul<-datos_estaciones[1,2]
 long_azul<-datos_estaciones[1,3]
 alt_azul<-datos_estaciones[1,4]
-data_azul<-list(nombre_azul,lat_azul,long_azul,alt_azul) 
+data_azul<-list("Nombre"=nombre_azul,"Latitud"=lat_azul,"Longitud"=long_azul,"Altura"=alt_azul) 
 azul<-list("Estacion"=data_azul,"Datos"=datos_azul) #Lista de Azul
 
 #CATAMARCA
@@ -75,7 +75,7 @@ nombre_catamarca<-datos_estaciones[2,1]
 lat_catamarca<-datos_estaciones[2,2]
 long_catamarca<-datos_estaciones[2,3]
 alt_catamarca<-datos_estaciones[2,4]
-data_catamarca<-list(nombre_catamarca,lat_catamarca,long_catamarca,alt_catamarca) 
+data_catamarca<-list("Nombre"=nombre_catamarca,"Latitud"=lat_catamarca,"Longitud"=long_catamarca,"Altura"=alt_catamarca) 
 catamarca<-list("Estacion"=data_catamarca,"Datos"=datos_catamarca) #Lista de Catamarca
 
 #AEROPARQUE
@@ -83,7 +83,7 @@ nombre_aeroparque<-datos_estaciones[3,1]
 lat_aeroparque<-datos_estaciones[3,2]
 long_aeroparque<-datos_estaciones[3,3]
 alt_aeroparque<-datos_estaciones[3,4]
-data_aeroparque<-list(nombre_aeroparque,lat_aeroparque,long_aeroparque,alt_aeroparque) 
+data_aeroparque<-list("Nombre"=nombre_aeroparque,"Latitud"=lat_aeroparque,"Longitud"=long_aeroparque,"Altura"=alt_aeroparque) 
 aeroparque<-list("Estacion"=data_aeroparque,"Datos"=datos_aeroparque) #Lista de Aeroparque
 
 #CHILECITO
@@ -91,7 +91,7 @@ nombre_chilecito<-datos_estaciones[4,1]
 lat_chilecito<-datos_estaciones[4,2]
 long_chilecito<-datos_estaciones[4,3]
 alt_chilecito<-datos_estaciones[4,4]
-data_chilecito<-list(nombre_chilecito,lat_chilecito,long_chilecito,alt_chilecito) 
+data_chilecito<-list("Nombre"=nombre_chilecito,"Latitud"=lat_chilecito,"Longitud"=long_chilecito,"Altura"=alt_chilecito) 
 chilecito<-list("Estacion"=data_chilecito,"Datos"=datos_chilecito) #Lista de Chilecito
 
 #IGUAZU
@@ -99,7 +99,7 @@ nombre_iguazu<-datos_estaciones[5,1]
 lat_iguazu<-datos_estaciones[5,2]
 long_iguazu<-datos_estaciones[5,3]
 alt_iguazu<-datos_estaciones[5,4]
-data_iguazu<-list(nombre_iguazu,lat_iguazu,long_iguazu,alt_iguazu) 
+data_iguazu<-list("Nombre"=nombre_iguazu,"Latitud"=lat_iguazu,"Longitud"=long_iguazu,"Altura"=alt_iguazu) 
 iguazu<-list("Estacion"=data_iguazu,"Datos"=datos_iguazu) #Lista de Iguazu
 
 #MENDOZA
@@ -107,10 +107,11 @@ nombre_mendoza<-datos_estaciones[6,1]
 lat_mendoza<-datos_estaciones[6,2]
 long_mendoza<-datos_estaciones[6,3]
 alt_mendoza<-datos_estaciones[6,4]
-data_mendoza<-list(nombre_mendoza,lat_mendoza,long_mendoza,alt_mendoza) 
+data_mendoza<-list("Nombre"=nombre_mendoza,"Latitud"=lat_mendoza,"Longitud"=long_mendoza,"Altura"=alt_mendoza) 
 mendoza<-list("Estacion"=data_mendoza,"Datos"=datos_mendoza) #Lista de Mendoza
 
-todo<-list(azul,catamarca,aeroparque,chilecito,iguazu,mendoza)
+estaciones<-list(azul,catamarca,aeroparque,chilecito,iguazu,mendoza)
+names(estaciones)<-c("Azul","Catamarca","Aeroparque","Chilecito","Iguazu","Mendoza")
 
 #Ordeno mi environment
 rm(list="alt_aeroparque","alt_azul","alt_catamarca","alt_chilecito","alt_iguazu","alt_mendoza")
@@ -123,14 +124,76 @@ rm(list="data_aeroparque","data_azul","data_catamarca","data_chilecito","data_ig
 rm(list="aeroparque","azul","catamarca","chilecito","iguazu","mendoza")
 
 
-
-
 #---------------------------------  Punto 2 ---------------------------------
 #---------------------------------  Inciso i ---------------------------------
+resumen<-function(lista){
+  nombres <- c()
+  fecha_inicial <- c()
+  fecha_final <- c()
+  mean_T <- c()
+  mean_Tr <- c()
+  desv_est_T <- c()
+  desv_est_Tr <- c()
+  max_T <- c()
+  min_T <- c()
+  max_Tr <- c()
+  min_Tr <- c()
+  #i es estacion
+  #j puede ser Datos o Ubicacion
+  #k puede ser cualquier elemento dentro de Datos o Ubicacion
+   for (estacion in 1:length(lista)){
+    for (dat_ubic in 1:length(lista [[estacion]] [] )) { 
+      for (elemento in names(lista [[estacion]] [[dat_ubic]] [])) {
+          if (elemento == "Fecha"){
+          fecha_inicial[estacion] <- lista[[estacion]][[dat_ubic]][[elemento]][1]
+          fecha_final[estacion]<- lista[[estacion]][[dat_ubic]][[elemento]][length(lista [[estacion]] [[dat_ubic]] [[elemento]][])]
+        }
+        else if (elemento == "Temperatura"){
+          mean_T [estacion]<- mean(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
+          desv_est_T [estacion] <- sd(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
+          max_T [estacion]  <- max(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
+          min_T [estacion] <- min(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
+        }
+        else if (elemento == "Temperatura.de.Rocio"){
+          mean_Tr [estacion] <- mean(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
+          desv_est_Tr [estacion] <- sd(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
+          max_Tr [estacion]  <- max(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
+          min_Tr [estacion] <- min(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
+        }
+      }
+    }
+   }
+  
+ resumen_estadistica <- data.frame("Fecha inicial"= fecha_inicial,
+                                    "Fecha final"= fecha_final,"Media de temperatura"= mean_T,
+                                    "Desvio estandar de temperatura"= desv_est_T, 
+                                    "Máximo de temperatura"= max_T,"Minimo de temperatura"= min_T,
+                                    "Media de temperatura de rocio"= mean_Tr,
+                                    "Desvio estandar de temperatura de rocio"= desv_est_Tr, 
+                                    "Máximo de temperatura de rocio"= max_Tr,
+                                    "Minimo de temperatura de rocio"= min_Tr,
+                                   row.names=c("Azul","Catamarca","Aeroparque","Chilecito",
+                                               "Iguazu","Mendoza"))
+
+   return(resumen_estadistica)
+}
+
+resumen(estaciones)
+
 #---------------------------------  Inciso ii ---------------------------------
+cercania <- function(lista,lat_min,lat_max,long_min,long_max) {
+  for (elemento in names(lista)) {
+    if (lista[[elemento]][["Estacion"]][["Latitud"]][]>=lat_min & lista[[elemento]][["Estacion"]][["Latitud"]][]<=lat_max & lista[[elemento]][["Estacion"]][["Longitud"]][]>=long_min & lista[[elemento]][["Estacion"]][["Longitud"]][]<=long_max){
+      print(paste("La estación",elemento,"tiene estaciones cercanas"))
+    } else {
+      print(paste("No hay estaciones cercanas"))
+    }
+  }
+}
+cercania(estaciones,-36.8,-36.8,-59.9,-59.9)
 
 #---------------------------------  Inciso iii ---------------------------------
-guardado <- function (x) {
-  save(x, file = "DatosEstaciones.RData") 
+guardado <- function (lista) {
+  save(lista, file = "DatosEstaciones.RData") 
 }
-guardado(datos)
+guardado(estaciones)
