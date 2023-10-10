@@ -178,7 +178,7 @@ resumen<-function(lista){
    return(resumen_estadistica)
 }
 
-resumen(estaciones)
+resumen()
 
 #---------------------------------  Inciso ii ---------------------------------
 cercania <- function(lista,lat_min,lat_max,long_min,long_max) {
@@ -190,7 +190,7 @@ cercania <- function(lista,lat_min,lat_max,long_min,long_max) {
     }
   }
 }
-cercania(estaciones,-36.8,-36.8,-59.9,-59.9)
+cercania()
 
 #---------------------------------  Inciso iii ---------------------------------
 guardado <- function (lista) {
