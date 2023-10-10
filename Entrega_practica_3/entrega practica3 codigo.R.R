@@ -5,7 +5,8 @@
 
 #seteo mi  directorio de trabajo y limpio el environment
 rm(list=ls())
-setwd("/Users/cande/Desktop/Labo/Practica_3/")
+#setwd("/Users/cande/Desktop/Labo/Practica_3/")
+setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
 
 #Cargo mis datos
 datos_azul<-read.table("AZUL.txt",col.names=c("Codigo de identificación","Fecha","Temperatura","Temperatura de Rocio","Presión")) 
@@ -178,19 +179,20 @@ resumen<-function(lista){
    return(resumen_estadistica)
 }
 
-resumen()
+resumen(estaciones)
 
 #---------------------------------  Inciso ii ---------------------------------
 cercania <- function(lista,lat_min,lat_max,long_min,long_max) {
   for (elemento in names(lista)) {
+    
     if (lista[[elemento]][["Estacion"]][["Latitud"]][]>=lat_min & lista[[elemento]][["Estacion"]][["Latitud"]][]<=lat_max & lista[[elemento]][["Estacion"]][["Longitud"]][]>=long_min & lista[[elemento]][["Estacion"]][["Longitud"]][]<=long_max){
       print(paste("La estación",elemento,"tiene estaciones cercanas"))
     } else {
-      print(paste("No hay estaciones cercanas"))
+      print(paste("la estacion", elemento, "no tiene estaciones cercanas")) 
     }
   }
 }
-cercania()
+cercania(estaciones,-36.8,-36.8,-59.9,-59.9)
 
 #---------------------------------  Inciso iii ---------------------------------
 guardado <- function (lista) {
