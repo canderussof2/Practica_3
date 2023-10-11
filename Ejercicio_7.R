@@ -1,6 +1,7 @@
 # ------- EJERCICIO 7 -------
 rm(list=ls())
-setwd("/Users/cande/Desktop/Labo/Practica_3/")
+#setwd("/Users/cande/Desktop/Labo/Practica_3/")
+setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
 
 #El archivo “datos tmedia SABE 2010.txt” contiene la serie de temperaturas medias diarias de la
 #estacion Aeroparque correspondiente al 2010. Utilizando el comando “scan” cargar los datos en una
@@ -17,22 +18,22 @@ temp <- scan("datos_tmedia_SABE_2010.txt",sep="")
 #muestre el valor del dıa anterior y del dıa siguiente. Obtener la cantidad total de elementos
 #erroneos.
 
-
-posic_erroneos <- which(temp>40)
-erroneos <- temp[which(temp>40)] 
-cant_erroneos <- print(length(erroneos))
-valores <- c()  
-for (valor in erroneos) {
-    valores<-print(paste(temp[valor-1],temp[valor+1]))
+erroneos<-temp[which(temp>40)]
+ant_post<-c()
+for (valores in temp){
+  for (valor in erroneos){
+    if (valores == valor) {
+     # ant_post[valores]<-c(ant_post,)
+    }
+  }
 }
+valor_erroneos <- print(temp[which(temp>40)])
+valor_ant_erroneos <- print(temp[which(temp>40)-1])
+valor_post_erroneos <- print(temp[which(temp>40)+1])
 
-#dar algo da, pero no da lo que deberia 
-for (valor in temp) {
-  if(valor == 40.55) 
-  valores<-print(paste(temp[valor-1],temp[valor+1]))
-}
-
-
+posic_erroneos <- print(which(temp>40))
+posic_ant_erroneos <- print(which(temp>40)-1)
+posic_post_erroneos <- print(which(temp>40)+1)
 
 
 
