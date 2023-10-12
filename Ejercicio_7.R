@@ -18,24 +18,39 @@ temp <- scan("datos_tmedia_SABE_2010.txt",sep="")
 #muestre el valor del dıa anterior y del dıa siguiente. Obtener la cantidad total de elementos
 #erroneos.
 
-erroneos<-temp[which(temp>40)]
+valor_erroneos <- print(temp[which(temp>40)])
 ant_post<-c()
-for (valores in temp){
-  for (valor in erroneos){
-    if (valores == valor) {
-     # ant_post[valores]<-c(ant_post,)
+for (valor in valor_erroneos) {
+      ant_post<-paste(temp[which(temp>40)-1],temp[which(temp>40)+1] )
     }
-  }
-}
+print(ant_post)
+cant_erroneos<- print(paste("La cantidad de valores erroneos es",length(valor_erroneos)))
+
 valor_erroneos <- print(temp[which(temp>40)])
 valor_ant_erroneos <- print(temp[which(temp>40)-1])
 valor_post_erroneos <- print(temp[which(temp>40)+1])
-
 posic_erroneos <- print(which(temp>40))
 posic_ant_erroneos <- print(which(temp>40)-1)
 posic_post_erroneos <- print(which(temp>40)+1)
 
+# -------------------------- b --------------------------
+#Calcular el valor maximo y el mınimo de la serie teniendo en cuenta los puntos erroneos y sin
+#tenerlos en cuenta. Calcular la cantidad total de datos faltantes. Remover los elementos faltantes
+#y los erroneos de la serie de temperatura.
 
+maximo_con_erroneos<-max(temp)
+minimo_con_erroneos<-min(temp)
 
-
-
+x<-as.numeric()
+for(valores in temp){
+if(x==temp[which(temp>40)]){
+  next
+} else if (x==-999) {
+  next
+}
+   maximo_sin_erroneos<-max(temp)
+   minimo_sin_erroneos<-min(temp)
+ }
+  
+  
+  
