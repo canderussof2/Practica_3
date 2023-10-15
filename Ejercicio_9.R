@@ -19,6 +19,22 @@ load("t_media_EF.RData")
 
 colnames(estaciones)<-c("Estacion","Enero","Febrero")
 
-#for(estacion in 1:nrow(estaciones)){
- # maximo<-max(estaciones[["Enero"]])
-#}
+#Valores maximos y posiciones maximos
+max_cada_estacion<-c()
+posiciones_maximos<-c()
+
+for(estacion in 1:nrow(estaciones)){
+ maximo<-max(estaciones[[estacion, 2]],na.rm=T)
+ max_cada_estacion<-c(max_cada_estacion,maximo)
+ posic<-which(estaciones[[estacion,2]] == maximo )
+ posiciones_maximos<-c(posiciones_maximos, posic)
+}
+
+
+anios<-seq(1982,2012, by=1)
+anios_quiero<-c(which(anios==posiciones_maximos))
+
+
+
+
+
