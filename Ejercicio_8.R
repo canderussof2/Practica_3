@@ -6,7 +6,8 @@
 #el desempeno de esta funcion con la serie utilizada en el ejercicio anterior.
 
 rm(list=ls())
-setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+#setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
 
 temp <- scan("datos_tmedia_SABE_2010.txt",sep="")
 
@@ -14,11 +15,11 @@ temp[which(temp==-999)] <- NA
 temp[which(temp>40)] <- NA
 
 estadistica<- function(serie){
- # temp[which(temp==-999)] <- NA
- # temp[which(temp>40)] <- NA
+  temp[which(temp==-999)] <- NA #No funciona porq no usa variable temp serie
+  temp[which(temp>40)] <- NA
  
-   serie[which(serie==-999)] <- NA
-   serie[which(serie>40)] <- NA
+#   serie[which(serie==-999)] <- NA #aca es mejor el NA para generalizar
+ #  serie[which(serie>40)] <- NA
   
   media<-mean(serie, na.rm = T)
   valor_maximo<-max(serie, na.rm = T)

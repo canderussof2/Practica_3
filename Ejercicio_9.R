@@ -8,7 +8,8 @@
 #esta asociada a una estacion:
 
 rm(list=ls())
-setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+#setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
 
 load("t_media_EF.RData")
 
@@ -58,7 +59,7 @@ for(estacion in 1:nrow(estaciones)){
   posic_valor_sup_umbral<-which(estaciones[[estacion,3]]>umbral) 
   anio<-1981+posic_valor_sup_umbral
   print(paste("En la estación", estacion,"se superó el umbral en los años",anio))
-  #df<-data.frame("Estacion"=estacion ,"Umbral"=umbral,"Años"=anio) #me da solo para bsas
+  df<-data.frame("Estacion"=estacion ,"Umbral"=umbral,"Años"=anio) #me da solo para bsas
 }
 
 media_estaciones<-c()
@@ -101,10 +102,11 @@ for(valor in estaciones[[2,3]]){
 #columna el de cada una de las estaciones.
 
 rm(list=ls())
-setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+#setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
 load("t_media_EF.RData")
 colnames(estaciones)<-c("Estacion","Enero","Febrero")
-
+class(estaciones)
 #todos_resultados<-c()
 estadistica<-function(vector) {
   largo<-length(vector)
@@ -115,18 +117,18 @@ estadistica<-function(vector) {
   rango<- maximo - minimo
   #resultados<-matrix(data=c(mediana,rango),nrow=3,ncol=5)
   resultados<-matrix(data=c(mediana,rango))
-  #colnames(resultados)<-c("Buenos Aires","Viedma","Rosario","San Luis","Resistencia")
-  colnames(resultados)<-c("Viedma")
+  colnames(resultados)<-c("Buenos Aires","Viedma","Rosario","San Luis","Resistencia")
+  #colnames(resultados)<-c("Viedma")
   #todos_resultados<-c(todos_resultados,resultados)
   return(resultados)
 }
 
 estadistica(estaciones[[2,2]])
-
+estadistica(estaciones[[estacion,2]])
 for(estacion in 1:nrow(estaciones)){
-  estadistica(estaciones[[estacion,2]])
+  resultados<-estadistica(estaciones[[estacion,2]])
 }
-
+print(resultados)
 
 
 

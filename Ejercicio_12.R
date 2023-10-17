@@ -9,8 +9,9 @@
 #funcion intrınseca interp1 de R.
 
 rm(list=ls())
-setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
-#POR QUE NO FUNCIONA?
+#setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
+
 datos<-read.table("presiondesaturacion.txt",col.names=c("Temperatura","Presión"))
 class(datos)
 funcion<-function(temperatura){
@@ -18,15 +19,16 @@ funcion<-function(temperatura){
     warning("Los valores ingresados se encuentran fuera del rango")
   } else {
     posic_temp<-which(datos$Temperatura==temperatura)
-    presion<-datos[posic_temp,posic_temp]
+    presion<-datos[posic_temp,2]
   }
   return(presion)
 }  
   
-funcion(40)
+funcion(-31.7)
 
 rm(list=ls())
-setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+#setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
 
 datos<-read.table("presiondesaturacion.txt",col.names=c("Temperatura","Presión"))
 class(datos)

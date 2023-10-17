@@ -1,8 +1,8 @@
 # Ejercicio 10
 
 rm(list=ls())
-setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
-
+#setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
 #Generar una celda con 10 elementos, donde cada elemento sea un nombre propio. 
 #Armar una funcion que permita ingresar una lista con nombres (de cualquier dimension) 
 #y una letra, y que devuelva una lista que contenga todos los nombres contenidos 
