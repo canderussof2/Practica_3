@@ -5,9 +5,9 @@
 
 #seteo mi  directorio de trabajo y limpio el environment
 rm(list=ls())
-#setwd("/Users/cande/Desktop/Labo/Practica_3/")
+setwd("/Users/cande/Desktop/Labo/Practica_3/")
 #setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
-setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
+#setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
 
 #Cargo mis datos
 datos_azul<-read.table("AZUL.txt",col.names=c("Codigo de identificación","Fecha","Temperatura","Temperatura de Rocio","Presión")) 
@@ -57,68 +57,22 @@ colnames(generales_mendoza)<-c("Estacion","Latitud","Longitud","Altura")
 
 datos_estaciones<-rbind(datos_estaciones,generales_mendoza)
 
-#Quiero quedarme con datos puntuales
-#AZUL
-nombre_azul<-datos_estaciones[1,1]
-lat_azul<-datos_estaciones[1,2]
-long_azul<-datos_estaciones[1,3]
-alt_azul<-datos_estaciones[1,4]
-data_azul<-list("Nombre"=nombre_azul,"Latitud"=lat_azul,"Longitud"=long_azul,"Altura"=alt_azul) 
-azul<-list("Estacion"=data_azul,"Datos"=datos_azul) #Lista de Azul
+estaciones <-list()
+for (e in 1:nrow(datos_estaciones)){
+    estacion <- list("Estacion"=datos_estaciones[[e,1]],"Latitud"=datos_estaciones[[e,2]], 
+                     "Longitud"=datos_estaciones[[e,3]], "Altura"=datos_estaciones[[e,4]]
+                     )
+    datos_por_estacion <- list(estacion )
+    estaciones<-c(estaciones, datos_por_estacion)
+}
 
-#CATAMARCA
-nombre_catamarca<-datos_estaciones[2,1]
-lat_catamarca<-datos_estaciones[2,2]
-long_catamarca<-datos_estaciones[2,3]
-alt_catamarca<-datos_estaciones[2,4]
-data_catamarca<-list("Nombre"=nombre_catamarca,"Latitud"=lat_catamarca,"Longitud"=long_catamarca,"Altura"=alt_catamarca) 
-catamarca<-list("Estacion"=data_catamarca,"Datos"=datos_catamarca) #Lista de Catamarca
+names(estaciones)<-c("Generales Azul","Generales Aeroparque","Generales Catamarca","Generales Chilecito","Generales Iguazu", "Generales Mendoza")
 
-#AEROPARQUE
-nombre_aeroparque<-datos_estaciones[3,1]
-lat_aeroparque<-datos_estaciones[3,2]
-long_aeroparque<-datos_estaciones[3,3]
-alt_aeroparque<-datos_estaciones[3,4]
-data_aeroparque<-list("Nombre"=nombre_aeroparque,"Latitud"=lat_aeroparque,"Longitud"=long_aeroparque,"Altura"=alt_aeroparque) 
-aeroparque<-list("Estacion"=data_aeroparque,"Datos"=datos_aeroparque) #Lista de Aeroparque
-
-#CHILECITO
-nombre_chilecito<-datos_estaciones[4,1]
-lat_chilecito<-datos_estaciones[4,2]
-long_chilecito<-datos_estaciones[4,3]
-alt_chilecito<-datos_estaciones[4,4]
-data_chilecito<-list("Nombre"=nombre_chilecito,"Latitud"=lat_chilecito,"Longitud"=long_chilecito,"Altura"=alt_chilecito) 
-chilecito<-list("Estacion"=data_chilecito,"Datos"=datos_chilecito) #Lista de Chilecito
-
-#IGUAZU
-nombre_iguazu<-datos_estaciones[5,1]
-lat_iguazu<-datos_estaciones[5,2]
-long_iguazu<-datos_estaciones[5,3]
-alt_iguazu<-datos_estaciones[5,4]
-data_iguazu<-list("Nombre"=nombre_iguazu,"Latitud"=lat_iguazu,"Longitud"=long_iguazu,"Altura"=alt_iguazu) 
-iguazu<-list("Estacion"=data_iguazu,"Datos"=datos_iguazu) #Lista de Iguazu
-
-#MENDOZA
-nombre_mendoza<-datos_estaciones[6,1]
-lat_mendoza<-datos_estaciones[6,2]
-long_mendoza<-datos_estaciones[6,3]
-alt_mendoza<-datos_estaciones[6,4]
-data_mendoza<-list("Nombre"=nombre_mendoza,"Latitud"=lat_mendoza,"Longitud"=long_mendoza,"Altura"=alt_mendoza) 
-mendoza<-list("Estacion"=data_mendoza,"Datos"=datos_mendoza) #Lista de Mendoza
-
-estaciones<-list(azul,catamarca,aeroparque,chilecito,iguazu,mendoza)
-names(estaciones)<-c("Azul","Catamarca","Aeroparque","Chilecito","Iguazu","Mendoza")
+estaciones<-list("Azul"=c(estaciones[[1]],datos_azul),"Aeroparque"=c(estaciones[[2]],datos_aeroparque),"Catamarca"=c(estaciones[[3]],datos_catamarca),"Chilecito"=c(estaciones[[4]],datos_chilecito),"Iguazu"=c(estaciones[[5]],datos_iguazu),"Mendoza"=c(estaciones[[6]],datos_mendoza))
 
 #Ordeno mi environment
-rm(list="alt_aeroparque","alt_azul","alt_catamarca","alt_chilecito","alt_iguazu","alt_mendoza")
-rm(list="lat_aeroparque","lat_azul","lat_catamarca","lat_chilecito","lat_iguazu","lat_mendoza")
-rm(list="long_aeroparque","long_azul","long_catamarca","long_chilecito","long_iguazu","long_mendoza")
-rm(list="nombre_aeroparque","nombre_azul","nombre_catamarca","nombre_chilecito","nombre_iguazu","nombre_mendoza")
-rm(list="alt","e","lat","long")
 rm(list="datos_aeroparque","datos_azul","datos_catamarca","datos_chilecito","datos_iguazu","datos_mendoza")
-rm(list="data_aeroparque","data_azul","data_catamarca","data_chilecito","data_iguazu","data_mendoza")
-rm(list="aeroparque","azul","catamarca","chilecito","iguazu","mendoza")
-
+rm(list="datos_estaciones","datos_por_estacion","estacion","generales_mendoza")
 
 #---------------------------------  Punto 2 ---------------------------------
 #---------------------------------  Inciso i ---------------------------------
