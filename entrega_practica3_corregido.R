@@ -130,15 +130,45 @@ resumen<-function(lista){
 resumen(estaciones)
 
 #---------------------------------  Inciso ii ---------------------------------
-cercania <- function(lista,lat_min,lat_max,long_min,long_max) {
-  for (elemento in names(lista)) {
-    
-    if (lista[[elemento]][["Latitud"]][]>=lat_min & lista[[elemento]][["Latitud"]][]<=lat_max & lista[[elemento]][["Longitud"]][]>=long_min & lista[[elemento]][["Longitud"]][]<=long_max){
-      print(paste("La estación",elemento,"tiene estaciones cercanas"))
+cercania <- function(estacion,lat_min,lat_max,long_min,long_max) {
+ 
+  if(estacion=="Azul"){
+    if (estaciones[["Azul"]][["Latitud"]][]>=lat_min & estaciones[["Azul"]][["Latitud"]][]<=lat_max & estaciones[["Azul"]][["Longitud"]][]>=long_min & estaciones[["Azul"]][["Longitud"]][]<=long_max){
+      print("La estación Azul tiene estaciones cercanas")
     } else {
-      print(paste("la estacion", elemento, "no tiene estaciones cercanas")) 
+      print("la estacion Azul no tiene estaciones cercanas") 
     }
-  }
+  } else if (estacion=="Aeroparque"){
+    if (estaciones[["Aeroparque"]][["Latitud"]][]>=lat_min & estaciones[["Aeroparque"]][["Latitud"]][]<=lat_max & estaciones[["Aeroparque"]][["Longitud"]][]>=long_min & estaciones[["Aeroparque"]][["Longitud"]][]<=long_max){
+      print("La estación Aeroparque tiene estaciones cercanas")
+    } else {
+      print("la estacion Aeroparque no tiene estaciones cercanas") 
+    }
+  } else if (estacion=="Catamarca"){
+    if (estaciones[["Catamarca"]][["Latitud"]][]>=lat_min & estaciones[["Catamarca"]][["Latitud"]][]<=lat_max & estaciones[["Catamarca"]][["Longitud"]][]>=long_min & estaciones[["Catamarca"]][["Longitud"]][]<=long_max){
+      print("La estación Catamarca tiene estaciones cercanas")
+    } else {
+      print("la estacion Catamarca no tiene estaciones cercanas") 
+    }
+  }  else if (estacion=="Chilecito"){
+    if (estaciones[["Chilecito"]][["Latitud"]][]>=lat_min & estaciones[["Chilecito"]][["Latitud"]][]<=lat_max & estaciones[["Chilecito"]][["Longitud"]][]>=long_min & estaciones[["Chilecito"]][["Longitud"]][]<=long_max){
+      print("La estación Chilecito tiene estaciones cercanas")
+    } else {
+      print("la estacion Chilecito no tiene estaciones cercanas") 
+    }
+  } else if (estacion=="Iguazu"){
+    if (estaciones[["Iguazu"]][["Latitud"]][]>=lat_min & estaciones[["Iguazu"]][["Latitud"]][]<=lat_max & estaciones[["Iguazu"]][["Longitud"]][]>=long_min & estaciones[["Iguazu"]][["Longitud"]][]<=long_max){
+      print("La estación Iguazu tiene estaciones cercanas")
+    } else {
+      print("la estacion Iguazu no tiene estaciones cercanas") 
+    } 
+  } else if (estacion=="Mendoza"){
+    if (estaciones[["Mendoza"]][["Latitud"]][]>=lat_min & estaciones[["Mendoza"]][["Latitud"]][]<=lat_max & estaciones[["Mendoza"]][["Longitud"]][]>=long_min & estaciones[["Mendoza"]][["Longitud"]][]<=long_max){
+      print("La estación Mendoza tiene estaciones cercanas")
+    } else {
+      print("la estacion Mendoza no tiene estaciones cercanas") 
+    } 
+  }       
 }
-cercania(estaciones,-36.8,-36.8,-59.9,-59.9)
+cercania("Azul",-36.8,-36.8,-59.9,-59.9)
 
