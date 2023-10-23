@@ -92,27 +92,26 @@ resumen<-function(lista){
   #j puede ser Datos o Ubicacion
   #k puede ser cualquier elemento dentro de Datos o Ubicacion
   for (estacion in 1:length(lista)){
-    for (dat_ubic in 1:length(lista [[estacion]] [] )) { 
-      for (elemento in names(lista [[estacion]] [[dat_ubic]] [])) {
+      for (elemento in names(lista [[estacion]] )) {
         if (elemento == "Fecha"){
-          fecha_inicial[estacion] <- lista[[estacion]][[dat_ubic]][[elemento]][1]
-          fecha_final[estacion]<- lista[[estacion]][[dat_ubic]][[elemento]][length(lista [[estacion]] [[dat_ubic]] [[elemento]][])]
+          fecha_inicial[estacion] <- lista[[estacion]][[elemento]][1]
+          fecha_final[estacion]<- lista[[estacion]] [[elemento]][length(lista [[estacion]] [[elemento]])]
         }
         else if (elemento == "Temperatura"){
-          mean_T [estacion]<- mean(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
-          desv_est_T [estacion] <- sd(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
-          max_T [estacion]  <- max(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
-          min_T [estacion] <- min(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
+          mean_T [estacion]<- mean(lista[[estacion]][[elemento]],na.rm=T)
+          desv_est_T [estacion] <- sd(lista[[estacion]][[elemento]],na.rm=T)
+          max_T [estacion]  <- max(lista[[estacion]][[elemento]],na.rm=T)
+          min_T [estacion] <- min(lista[[estacion]][[elemento]],na.rm=T)
         }
         else if (elemento == "Temperatura.de.Rocio"){
-          mean_Tr [estacion] <- mean(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
-          desv_est_Tr [estacion] <- sd(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
-          max_Tr [estacion]  <- max(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
-          min_Tr [estacion] <- min(lista[[estacion]][[dat_ubic]][[elemento]][],na.rm=T)
+          mean_Tr [estacion] <- mean(lista[[estacion]][[elemento]],na.rm=T)
+          desv_est_Tr [estacion] <- sd(lista[[estacion]][[elemento]],na.rm=T)
+          max_Tr [estacion]  <- max(lista[[estacion]][[elemento]],na.rm=T)
+          min_Tr [estacion] <- min(lista[[estacion]][[elemento]],na.rm=T)
         }
       }
     }
-  }
+  
   
   resumen_estadistica <- data.frame("Fecha inicial"= fecha_inicial,
                                     "Fecha final"= fecha_final,"Media de temperatura"= mean_T,
@@ -134,7 +133,7 @@ resumen(estaciones)
 cercania <- function(lista,lat_min,lat_max,long_min,long_max) {
   for (elemento in names(lista)) {
     
-    if (lista[[elemento]][["Estacion"]][["Latitud"]][]>=lat_min & lista[[elemento]][["Estacion"]][["Latitud"]][]<=lat_max & lista[[elemento]][["Estacion"]][["Longitud"]][]>=long_min & lista[[elemento]][["Estacion"]][["Longitud"]][]<=long_max){
+    if (lista[[elemento]][["Latitud"]][]>=lat_min & lista[[elemento]][["Latitud"]][]<=lat_max & lista[[elemento]][["Longitud"]][]>=long_min & lista[[elemento]][["Longitud"]][]<=long_max){
       print(paste("La estación",elemento,"tiene estaciones cercanas"))
     } else {
       print(paste("la estacion", elemento, "no tiene estaciones cercanas")) 
@@ -143,8 +142,3 @@ cercania <- function(lista,lat_min,lat_max,long_min,long_max) {
 }
 cercania(estaciones,-36.8,-36.8,-59.9,-59.9)
 
-#---------------------------------  Inciso iii ---------------------------------
-guardado <- function (lista) {
-  save(lista, file = "DatosEstaciones.RData") 
-}
-guardado(estaciones)

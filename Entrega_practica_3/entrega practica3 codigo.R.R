@@ -5,8 +5,8 @@
 
 #seteo mi  directorio de trabajo y limpio el environment
 rm(list=ls())
-#setwd("/Users/cande/Desktop/Labo/Practica_3/")
-setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
+setwd("/Users/cande/Desktop/Labo/Practica_3/")
+#setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
 
 #Cargo mis datos
 datos_azul<-read.table("AZUL.txt",col.names=c("Codigo de identificación","Fecha","Temperatura","Temperatura de Rocio","Presión")) 
