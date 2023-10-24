@@ -5,10 +5,10 @@
 
 #seteo mi  directorio de trabajo y limpio el environment
 rm(list=ls())
-setwd("/Users/cande/Desktop/Labo/Practica_3/")
+#setwd("/Users/cande/Desktop/Labo/Practica_3/")
 #setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
 #setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
-
+setwd("/home/clinux01/Escritorio/Cande/Practica_3/")
 #Cargo mis datos
 datos_azul<-read.table("AZUL.txt",col.names=c("Codigo de identificación","Fecha","Temperatura","Temperatura de Rocio","Presión")) 
 datos_catamarca<-read.table("CATAMARCA.txt",col.names=c("Codigo de identificación","Fecha","Temperatura","Temperatura de Rocio","Presión")) 
@@ -170,5 +170,17 @@ cercania <- function(estacion,lat_min,lat_max,long_min,long_max) {
     } 
   }       
 }
-cercania("Azul",-36.8,-36.8,-59.9,-59.9)
+cercania("Azul",-35.8,-36.8,-59.9,-59.9)
+
+cercania2 <- function(lista,lat_min,lat_max,long_min,long_max) {
+  for (elemento in names(estaciones)) {
+    
+    if (estaciones[[elemento]][["Latitud"]][]>=lat_min & estaciones[[elemento]][["Latitud"]][]<=lat_max & estaciones[[elemento]][["Longitud"]][]>=long_min & estaciones[[elemento]][["Longitud"]][]<=long_max){
+      print(paste("La estación",elemento,"tiene estaciones cercanas"))
+    } else {
+      print(paste("la estacion", elemento, "no tiene estaciones cercanas")) 
+    }
+  }
+}
+cercania2(estaciones,-36.8,-36.8,-59.9,-59.9)
 
