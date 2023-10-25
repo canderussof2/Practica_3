@@ -5,10 +5,11 @@
 
 #seteo mi  directorio de trabajo y limpio el environment
 rm(list=ls())
-#setwd("/Users/cande/Desktop/Labo/Practica_3/")
+setwd("/Users/cande/Desktop/Labo/Practica_3/")
 #setwd("/home/clinux01/Escritorio/Cande Labo Martes/Practica_3/")
 #setwd("/Users/Usuario/Desktop/Cande/Laboratorio de Procesamiento de Información meteorológica/Practica_3/")
-setwd("/home/clinux01/Escritorio/Cande/Practica_3/")
+#setwd("/home/clinux01/Escritorio/Cande/Practica_3/")
+
 #Cargo mis datos
 datos_azul<-read.table("AZUL.txt",col.names=c("Codigo de identificación","Fecha","Temperatura","Temperatura de Rocio","Presión")) 
 datos_catamarca<-read.table("CATAMARCA.txt",col.names=c("Codigo de identificación","Fecha","Temperatura","Temperatura de Rocio","Presión")) 
@@ -88,9 +89,7 @@ resumen<-function(lista){
   min_T <- c()
   max_Tr <- c()
   min_Tr <- c()
-  #i es estacion
-  #j puede ser Datos o Ubicacion
-  #k puede ser cualquier elemento dentro de Datos o Ubicacion
+
   for (estacion in 1:length(lista)){
       for (elemento in names(lista [[estacion]] )) {
         if (elemento == "Fecha"){
@@ -184,3 +183,4 @@ cercania2 <- function(lista,lat_min,lat_max,long_min,long_max) {
 }
 cercania2(estaciones,-36.8,-36.8,-59.9,-59.9)
 
+#este inciso se puede hacer de ambas formas. Cual es mejor?
